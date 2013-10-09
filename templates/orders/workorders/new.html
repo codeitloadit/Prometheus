@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}New Work Order {{ order.order_id }} {{ block.super }}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+			<div class="well">
+				{{ form|crispy }}
+			</div>
+{% endblock %}

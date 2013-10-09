@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}All Orders {{ block.super }}{% endblock %}
+
+{% block content %}
+			<div class="well">
+	{% for order in object_list %}
+		{% if forloop.first %}
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Product</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+		{% endif %}
+						<tr>
+							<td><a href="{{ order.get_absolute_url }}">{{ order.order_id }}</a></td>
+							<td>{{ order.product.name }}</td>
+							<td><span class="label">{{ order.current_status }}</span></td>
+						</tr>
+		{% if forloop.last %}
+					</tbody>
+				</table>
+		{% endif %}
+	{% empty %}
+			<p>No orders are available at this time.</p>
+	{% endfor %}
+			</div>
+{% endblock %}

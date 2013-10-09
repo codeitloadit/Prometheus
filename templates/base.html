@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>{% block title %}| Optimal Outsource{% endblock %}</title>
+
+{% block css %}
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
+{% endblock %}
+
+{% block js %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+{% endblock %}
+    </head>
+    <body>
+        <div id="container" class="container-fluid">
+	        <div id="nav" class="span12 navbar-inverse">{% block navbar %} {% include 'partials/navbar.html' %} {% endblock navbar %}</div>
+	        <div id="content" class="container span4"> {% block content %} <img src="{{ STATIC_URL }}img/favicon.ico" /> {% endblock %} </div>
+			<div id="footer" class="span12">{% block footer %} {% include 'partials/footer.html' %} {% endblock footer %}</div>
+	        {% comment %} {% include 'partials/analytics.html' %} {% endcomment %}
+		</div>
+    </body>
+</html>

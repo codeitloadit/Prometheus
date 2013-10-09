@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}New Order {{ block.super }}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+		<form action="" enctype="multipart/form-data" method="post" id="new order_form">{% csrf_token %}
+	{{ order_form|crispy }}
+	{{ gm_form|crispy }}
+	{{ files_form|crispy }}
+			<input type="submit" value="Create" />
+		</form>
+{% endblock %}

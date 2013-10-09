@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Order {{ order.order_id }} {{ block.super }}{% endblock %}
+
+{% block content %}
+			<div class="well">
+				<p>Work orders:</p>
+	{% for name, url_arg in work_order_classes %}
+		{% if forloop.first %}
+				<ul>
+		{% endif %}
+				<li><a href="{% url newworkorder order.pk url_arg %}">{{ name }}</a>
+		{% if forloop.last %}
+				</ul>
+		{% endif %}
+	{% endfor %}
+			</div>
+			<div class="well">
+				<h2><a href="{{ order.get_absolute_url }}">{{ order.order_id }}</a></h2>
+				<table>
+					<tbody>
+						<tr>
+							<th>Contact:</th>
+							<td>{{ order.created_by.get_full_name }}</td>
+						</tr>
+						<tr>
+							<th>Job Name:</th>
+							<td>{{ order.job_name }}</td>
+						</tr>
+						<tr>
+							<th>Purchase Order:</th>
+							<td>{{ order.purchase_order }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="well">
+				<p><strong>Special Instructions:</strong></p>
+				<p>{{ order.special_instructions }}</p>
+			</div>
+{% endblock %}
